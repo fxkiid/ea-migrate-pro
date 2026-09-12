@@ -14,10 +14,12 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as SigninRouteImport } from './routes/signin'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as SupportRouteImport } from './routes/support'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppActivateRouteImport } from './routes/app.activate'
 import { Route as AppHomeRouteImport } from './routes/app.home'
 import { Route as AppMetatraderRouteImport } from './routes/app.metatrader'
+import { Route as AppPairsRouteImport } from './routes/app.pairs'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as DashboardEasRouteImport } from './routes/dashboard.eas'
 import { Route as DashboardLicensesRouteImport } from './routes/dashboard.licenses'
@@ -59,6 +61,11 @@ const SignupRoute = SignupRouteImport.update({
   path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/app/',
   path: '/app/',
@@ -77,6 +84,11 @@ const AppHomeRoute = AppHomeRouteImport.update({
 const AppMetatraderRoute = AppMetatraderRouteImport.update({
   id: '/app/metatrader',
   path: '/app/metatrader',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppPairsRoute = AppPairsRouteImport.update({
+  id: '/app/pairs',
+  path: '/app/pairs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardIndexRoute = DashboardIndexRouteImport.update({
@@ -161,9 +173,11 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRouteWithChildren
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
+  '/support': typeof SupportRoute
   '/app/activate': typeof AppActivateRoute
   '/app/home': typeof AppHomeRoute
   '/app/metatrader': typeof AppMetatraderRoute
+  '/app/pairs': typeof AppPairsRoute
   '/dashboard/eas': typeof DashboardEasRoute
   '/dashboard/licenses': typeof DashboardLicensesRoute
   '/dashboard/profile': typeof DashboardProfileRoute
@@ -186,9 +200,11 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
+  '/support': typeof SupportRoute
   '/app/activate': typeof AppActivateRoute
   '/app/home': typeof AppHomeRoute
   '/app/metatrader': typeof AppMetatraderRoute
+  '/app/pairs': typeof AppPairsRoute
   '/dashboard/eas': typeof DashboardEasRoute
   '/dashboard/licenses': typeof DashboardLicensesRoute
   '/dashboard/profile': typeof DashboardProfileRoute
@@ -213,9 +229,11 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRouteWithChildren
   '/signin': typeof SigninRoute
   '/signup': typeof SignupRoute
+  '/support': typeof SupportRoute
   '/app/activate': typeof AppActivateRoute
   '/app/home': typeof AppHomeRoute
   '/app/metatrader': typeof AppMetatraderRoute
+  '/app/pairs': typeof AppPairsRoute
   '/dashboard/eas': typeof DashboardEasRoute
   '/dashboard/licenses': typeof DashboardLicensesRoute
   '/dashboard/profile': typeof DashboardProfileRoute
@@ -241,9 +259,11 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/signin'
     | '/signup'
+    | '/support'
     | '/app/activate'
     | '/app/home'
     | '/app/metatrader'
+    | '/app/pairs'
     | '/dashboard/eas'
     | '/dashboard/licenses'
     | '/dashboard/profile'
@@ -266,9 +286,11 @@ export interface FileRouteTypes {
     | '/admin'
     | '/signin'
     | '/signup'
+    | '/support'
     | '/app/activate'
     | '/app/home'
     | '/app/metatrader'
+    | '/app/pairs'
     | '/dashboard/eas'
     | '/dashboard/licenses'
     | '/dashboard/profile'
@@ -292,9 +314,11 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/signin'
     | '/signup'
+    | '/support'
     | '/app/activate'
     | '/app/home'
     | '/app/metatrader'
+    | '/app/pairs'
     | '/dashboard/eas'
     | '/dashboard/licenses'
     | '/dashboard/profile'
@@ -319,9 +343,11 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRouteWithChildren
   SigninRoute: typeof SigninRoute
   SignupRoute: typeof SignupRoute
+  SupportRoute: typeof SupportRoute
   AppActivateRoute: typeof AppActivateRoute
   AppHomeRoute: typeof AppHomeRoute
   AppMetatraderRoute: typeof AppMetatraderRoute
+  AppPairsRoute: typeof AppPairsRoute
   MentorSlugRoute: typeof MentorSlugRoute
   AppIndexRoute: typeof AppIndexRoute
   AppSettingsBackgroundRoute: typeof AppSettingsBackgroundRoute
@@ -369,6 +395,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/': {
       id: '/app/'
       path: '/app'
@@ -395,6 +428,13 @@ declare module '@tanstack/react-router' {
       path: '/app/metatrader'
       fullPath: '/app/metatrader'
       preLoaderRoute: typeof AppMetatraderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/pairs': {
+      id: '/app/pairs'
+      path: '/app/pairs'
+      fullPath: '/app/pairs'
+      preLoaderRoute: typeof AppPairsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard/': {
@@ -537,9 +577,11 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRouteWithChildren,
   SigninRoute: SigninRoute,
   SignupRoute: SignupRoute,
+  SupportRoute: SupportRoute,
   AppActivateRoute: AppActivateRoute,
   AppHomeRoute: AppHomeRoute,
   AppMetatraderRoute: AppMetatraderRoute,
+  AppPairsRoute: AppPairsRoute,
   MentorSlugRoute: MentorSlugRoute,
   AppIndexRoute: AppIndexRoute,
   AppSettingsBackgroundRoute: AppSettingsBackgroundRoute,

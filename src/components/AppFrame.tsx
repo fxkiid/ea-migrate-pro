@@ -1,0 +1,1 @@
+import React from "react";export function AppFrame({ children }: { children: React.ReactNode }) {  return (    <div className="min-h-screen flex flex-col">      <main className="flex flex-col gap-6 pt-20 px-6">        {children}      </main>    </div>  );}export default AppFrame;
